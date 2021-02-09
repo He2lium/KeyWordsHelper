@@ -53,7 +53,7 @@
         let phrases_compiled = '';
         for(let i in phrases){
             if(phrases[i] == "")continue;
-            phrases_compiled += phrases[i][0].toUpperCase() + phrases[i].slice(1) + "\n";
+            phrases_compiled += (phrases[i][0].toUpperCase() + phrases[i].slice(1)).replace(',','') + "\n";
         }
         let minus_compiled = '';
         for(let i in minus){
@@ -65,7 +65,6 @@
             if(minus_phrase[i] == "")continue;
             minus_phrase_compiled+= minus_phrase[i]+"\n";
         }
-        phrases_compiled = phrases_compiled.replace(/[^"A-Za-zА-Яа-я0-9\+\-]/ui,'');
         $('#minus_phrase').val(minus_phrase_compiled.replace("\n\n","\n"));
         $('#phrases').val(phrases_compiled.replace("\n\n","\n"));
         $('#minus').val(minus_compiled.replace("\n\n","\n"));
