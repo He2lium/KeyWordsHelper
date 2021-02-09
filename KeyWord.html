@@ -26,6 +26,7 @@
         let phrases = $('#phrases').val();
         let minus = $('#minus').val();
         let minus_phrase = $('#minus_phrase').val();
+
         phrases = phrases.split("\n");
         minus = minus.split("\n");
         minus_phrase = minus_phrase.split("\n");
@@ -33,10 +34,16 @@
         for(let i in phrases){
             for(let j in minus){
                 if(minus[j] == "")continue;
-                if(phrases[i].indexOf(minus[j]) >= 0){
-                    minus_phrase.push(phrases[i]);
-                    phrases[i] = false;
+                let temp = phrases[i].replace(/[A-Za-z0-9А-Яа-я]/i,'');
+                temp = temp.split(' ');
+                for (let k in temp){
+                    if(temp[k].toLowerCase()==minus[j]){
+                        minus_phrase.push(phrases[i]);
+                        phrases[i] = false;
+                        break;
+                    }
                 }
+                if(phrases[i]===false)break;
             }
         }
 
