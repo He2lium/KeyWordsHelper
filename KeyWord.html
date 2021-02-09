@@ -56,7 +56,7 @@
                 for(let k in minus){
                     if(phrases[i][j].toLowerCase() == minus[k]){
                         minus_phrase.push(arr_to_string(phrases[i]));
-                        phrases[i]=false;
+                        phrases[i]=[];
                         break;
                     }
                 }
@@ -65,7 +65,7 @@
         }
 
         for(let i in phrases){
-            if(phrases[i]===false){
+            if(!phrases[i].length){
                 phrases.splice(i,1);
             }
         }
